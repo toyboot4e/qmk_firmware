@@ -7,7 +7,7 @@
     "features": {
         "nkro": true,
         "bootmagic": true,
-        "mousekey": false,
+        "mousekey": true,
         "extrakey": true
     },
     "qmk": {
