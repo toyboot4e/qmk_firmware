@@ -7,10 +7,10 @@ enum layer_names {
 };
 
 enum custom_keycodes {
-    KC_NO_OP = SAFE_RANGE,
-    KC_STENO,
+    KC_STENO = SAFE_RANGE,
 };
 
+// clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // KEYBOARD (LAYER 0)
     // ┌─────┬─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┬─────┐
@@ -25,12 +25,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //                         │/CTRL│ /L1 │   │     │   │SHIFT│/L2  │
     //                         └─────┴─────┘   └─────┘   └─────┴─────┘
     [_L0] = LAYOUT(
-        QK_BOOT,  KC_Q, KC_W, KC_E, KC_R, KC_T,           KC_Y, KC_U, KC_I,    KC_O,   KC_P,    KC_NO_OP,
-        KC_NO_OP, KC_Z, KC_X, KC_C, KC_V, KC_B,           KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_NO_OP,
-                                KC_NO_OP,      KC_STENO,  KC_NO_OP,
+        QK_BOOT, KC_Q, KC_W, KC_E, KC_R, KC_T,            KC_Y, KC_U, KC_I,    KC_O,   KC_P,    KC_NO,
+        KC_NO,   KC_Z, KC_X, KC_C, KC_V, KC_B,            KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_NO,
+                                KC_NO,         KC_STENO,  KC_NO,
                                 KC_LNG1, KC_SPACE,        KC_LNG2, KC_ENT
     ),
 };
+// clang-format on
 
 // Returns whether to delagate the key event handling to QMK's default.
 // https://docs.qmk.fm/custom_quantum_functions#example-process-record-user-implementation
