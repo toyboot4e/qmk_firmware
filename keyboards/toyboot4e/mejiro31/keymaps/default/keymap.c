@@ -19,14 +19,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //                         ┌───────────┐             ┌───────────┐
     //                         │           │             │           │
     //                         ├─────┬─────┤   ┌─────┐   ├─────┬─────┤
-    //                         │LANG1│ SPC │   │Steno│   │LANG2│ENTER│
-    //                         │/CTRL│ /L1 │   │     │   │SHIFT│/L2  │
+    //                         │LNG1/│ SPC │   │Steno│   │LNG2/│ENTER│
+    //                         │CTRL │ /L1 │   │     │   │SHIFT│/L2  │
     //                         └─────┴─────┘   └─────┘   └─────┴─────┘
     [_L0] = LAYOUT(
         QK_BOOT, KC_Q, KC_W, KC_E, KC_R, KC_T,            KC_Y, KC_U, KC_I,    KC_O,   KC_P,    KC_NO,
         KC_NO,   KC_Z, KC_X, KC_C, KC_V, KC_B,            KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_NO,
                                 KC_NO,         KC_STENO,  KC_NO,
-                                KC_LNG1, KC_SPACE,        KC_LNG2, KC_ENT
+                                KC_LNG2, KC_SPACE,        KC_LNG1, KC_ENT
     ),
 };
 // clang-format on
