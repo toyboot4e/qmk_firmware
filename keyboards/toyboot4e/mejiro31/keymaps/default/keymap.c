@@ -1,3 +1,6 @@
+// Notes:
+// - "middle row": two-key combo of two rows in the same column.
+
 #include QMK_KEYBOARD_H
 
 enum layer_names {
@@ -8,72 +11,123 @@ enum custom_keycodes {
     KC_STENO = SAFE_RANGE,
 };
 
-// clang-format off
-const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    // KEYBOARD (LAYER 0)
-    // ┌─────┬─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┬─────┐
-    // │     │  q  │  w  │  e  │  r  │  t  │             │  y  │  u  │  i  │  o  │  p  │     │
-    // ├─────┼a/WIN┼──s──┼──d──┼──f──┼──g──┤             ├──h──┼──j──┼──k──┼──l──┼;/WIN┼─────┤
-    // │     │z/SHF│  x  │  c  │  v  │  b  │             │  n  │  m  │  ,  │  .  │//ALT│     │
-    // └─────┴─────┴─────┴─────┴─────┴─────┘             └─────┴─────┴─────┴─────┴─────┴─────┘
-    //                         ┌───────────┐             ┌───────────┐
-    //                         │           │             │           │
-    //                         ├─────┬─────┤   ┌─────┐   ├─────┬─────┤
-    //                         │LNG1/│ SPC │   │Steno│   │LNG2/│ENTER│
-    //                         │CTRL │ /L1 │   │     │   │SHIFT│/L2  │
-    //                         └─────┴─────┘   └─────┘   └─────┴─────┘
-    [_L0] = LAYOUT(
-        QK_BOOT, KC_Q, KC_W, KC_E, KC_R, KC_T,            KC_Y, KC_U, KC_I,    KC_O,   KC_P,    KC_NO,
-        KC_NO,   KC_Z, KC_X, KC_C, KC_V, KC_B,            KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_NO,
-                                KC_NO,         KC_STENO,  KC_NO,
-                                KC_LNG2, KC_SPACE,        KC_LNG1, KC_ENT
-    ),
-};
-// clang-format on
-
 // combo:
 // https://docs.qmk.fm/features/combo
 enum combos_names {
-    Q_Z = 0,
-    W_X,
-    E_C,
-    R_V,
-    T_B,
+    MID_C1 = 0,
+    MID_C2,
+    MID_C3,
+    MID_C4,
+    MID_C5,
 
-    Y_N,
-    U_M,
-    I_COMMA,
-    O_DOT,
-    P_SLASH,
+    MID_C6,
+    MID_C7,
+    MID_C8,
+    MID_C9,
+    MID_C10,
 };
 
-const uint16_t PROGMEM combo_q_z[] = {KC_Q, KC_Z, COMBO_END};
-const uint16_t PROGMEM combo_w_x[] = {KC_W, KC_X, COMBO_END};
-const uint16_t PROGMEM combo_e_c[] = {KC_E, KC_C, COMBO_END};
-const uint16_t PROGMEM combo_r_v[] = {KC_R, KC_V, COMBO_END};
-const uint16_t PROGMEM combo_t_b[] = {KC_T, KC_B, COMBO_END};
+// Layer 0:
+//      0     1     2     3     4     5                   6     7     8     9     10    11
+//   ┌─────┬─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┬─────┐
+// 0 │     │  q  │  w  │  e  │  r  │  t  │             │  y  │  u  │  i  │  o  │  p  │     │
+//   ├─────┼a/WIN┼──s──┼──d──┼──f──┼──g──┤             ├──h──┼──j──┼──k──┼──l──┼;/WIN┼─────┤
+// 1 │     │z/SHF│  x  │  c  │  v  │  b  │             │  n  │  m  │  ,  │  .  │//ALT│     │
+//   └─────┴─────┴─────┴─────┴─────┴─────┘             └─────┴─────┴─────┴─────┴─────┴─────┘
+//                           ┌───────────┐   ┌─────┐   ┌───────────┐
+//                        2  │           │   │Steno│   │           │
+//                           ├─────┬─────┤   └─────┘   ├─────┬─────┤
+//                        3  │LNG1/│ SPC │             │LNG2/│ENTER│
+//                           │CTRL │ /L1 │             │SHIFT│/L2  │
+//                           └─────┴─────┘             └─────┴─────┘
 
-const uint16_t PROGMEM combo_y_n[]     = {KC_Y, KC_N, COMBO_END};
-const uint16_t PROGMEM combo_u_m[]     = {KC_U, KC_M, COMBO_END};
-const uint16_t PROGMEM combo_i_comma[] = {KC_I, KC_COMMA, COMBO_END};
-const uint16_t PROGMEM combo_o_dot[]   = {KC_O, KC_DOT, COMBO_END};
-const uint16_t PROGMEM combo_p_slash[] = {KC_P, KC_SLASH, COMBO_END};
+// Deduplicate the key codes for `keymaps` and `key_combos` here:
 
-// clang-format off
+// left hand side:
+const uint16_t key_r0_c0 = QK_BOOT;
+const uint16_t key_r0_c1 = MT(MOD_LGUI, KC_Q);
+const uint16_t key_r0_c2 = KC_W;
+const uint16_t key_r0_c3 = KC_E;
+const uint16_t key_r0_c4 = KC_R;
+const uint16_t key_r0_c5 = KC_T;
+
+const uint16_t key_mid_c1 = MT(MOD_LGUI, KC_A);
+const uint16_t key_mid_c2 = KC_S;
+const uint16_t key_mid_c3 = KC_D;
+const uint16_t key_mid_c4 = KC_F;
+const uint16_t key_mid_c5 = KC_G;
+
+const uint16_t key_r1_c0 = KC_NO;
+const uint16_t key_r1_c1 = MT(MOD_LSFT, KC_Z);
+const uint16_t key_r1_c2 = KC_X;
+const uint16_t key_r1_c3 = KC_C;
+const uint16_t key_r1_c4 = KC_V;
+const uint16_t key_r1_c5 = KC_B;
+
+// right hand side:
+const uint16_t key_r0_c6  = KC_Y;
+const uint16_t key_r0_c7  = KC_U;
+const uint16_t key_r0_c8  = KC_I;
+const uint16_t key_r0_c9  = KC_O;
+const uint16_t key_r0_c10 = KC_P;
+const uint16_t key_r0_c11 = KC_NO;
+
+const uint16_t key_mid_c6  = KC_H;
+const uint16_t key_mid_c7  = KC_J;
+const uint16_t key_mid_c8  = KC_K;
+const uint16_t key_mid_c9  = KC_L;
+const uint16_t key_mid_c10 = KC_SEMICOLON;
+
+const uint16_t key_r1_c6  = KC_N;
+const uint16_t key_r1_c7  = KC_M;
+const uint16_t key_r1_c8  = KC_COMMA;
+const uint16_t key_r1_c9  = KC_DOT;
+const uint16_t key_r1_c10 = KC_SLASH;
+const uint16_t key_r1_c11 = KC_NO;
+
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+    // KEYBOARD (LAYER 0)
+    [_L0] = LAYOUT(
+        // row 0
+        key_r0_c0, key_r0_c1, key_r0_c2, key_r0_c3, key_r0_c4, key_r0_c5, key_r0_c6, key_r0_c7, key_r0_c8, key_r0_c9, key_r0_c10, key_r0_c11,
+
+        // row 1
+        key_r1_c0, key_r1_c1, key_r1_c2, key_r1_c3, key_r1_c4, key_r1_c5, key_r1_c6, key_r1_c7, key_r1_c8, key_r1_c9, key_r1_c10, key_r1_c11,
+
+        // row 2
+        KC_NO, KC_STENO, KC_NO,
+
+        // row 3
+        MT(MOD_LCTL, KC_LNG2), KC_SPACE, MT(MOD_LSFT, KC_LNG1), KC_ENT),
+};
+
+// Combos for the middle row illusion:
+const uint16_t PROGMEM combo_mid_c1[] = {key_r0_c1, key_r1_c1, COMBO_END};
+const uint16_t PROGMEM combo_mid_c2[] = {key_r0_c2, key_r1_c2, COMBO_END};
+const uint16_t PROGMEM combo_mid_c3[] = {key_r0_c3, key_r1_c3, COMBO_END};
+const uint16_t PROGMEM combo_mid_c4[] = {key_r0_c4, key_r1_c4, COMBO_END};
+const uint16_t PROGMEM combo_mid_c5[] = {key_r0_c5, key_r1_c5, COMBO_END};
+
+const uint16_t PROGMEM combo_mid_c6[]  = {key_r0_c6, key_r1_c6, COMBO_END};
+const uint16_t PROGMEM combo_mid_c7[]  = {key_r0_c7, key_r1_c7, COMBO_END};
+const uint16_t PROGMEM combo_mid_c8[]  = {key_r0_c8, key_r1_c8, COMBO_END};
+const uint16_t PROGMEM combo_mid_c9[]  = {key_r0_c9, key_r1_c9, COMBO_END};
+const uint16_t PROGMEM combo_mid_c10[] = {key_r0_c10, key_r1_c10, COMBO_END};
+
 combo_t key_combos[] = {
-    COMBO(combo_q_z, KC_A),
-    COMBO(combo_w_x, KC_S),
-    COMBO(combo_e_c, KC_D),
-    COMBO(combo_r_v, KC_F),
-    COMBO(combo_t_b, KC_G),
+    COMBO(combo_mid_c1, key_mid_c1),
+    COMBO(combo_mid_c2, key_mid_c2),
+    COMBO(combo_mid_c3, key_mid_c3),
+    COMBO(combo_mid_c4, key_mid_c4),
+    COMBO(combo_mid_c5, key_mid_c5),
 
-    COMBO(combo_y_n, KC_H),
-    COMBO(combo_u_m, KC_J),
-    COMBO(combo_i_comma, KC_K),
-    COMBO(combo_o_dot, KC_L),
-    COMBO(combo_p_slash, KC_SEMICOLON),
+    //
+    COMBO(combo_mid_c6, key_mid_c6),
+    COMBO(combo_mid_c7, key_mid_c7),
+    COMBO(combo_mid_c8, key_mid_c8),
+    COMBO(combo_mid_c9, key_mid_c9),
+    COMBO(combo_mid_c10, key_mid_c10),
 };
-// clang-format on
 
 // Returns whether to delagate the key event handling to QMK's default.
 // https://docs.qmk.fm/custom_quantum_functions#example-process-record-user-implementation
