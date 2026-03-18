@@ -89,10 +89,48 @@ const uint16_t key_l0_r1_c11 = KC_NO;
 // Layer 1:
 //      0     1     2     3     4     5                   6     7     8     9     10    11
 //   ┌─────┬─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┬─────┐
-// 0 │     │  q  │  w  │  e  │  r  │  t  │             │  y  │  u  │  i  │  o  │  p  │     │
-//   ├─────┼a/WIN┼──s──┼──d──┼──f──┼──g──┤             ├──h──┼──j──┼──k──┼──l──┼;/WIN┼─────┤
-// 1 │     │z/SHF│  x  │  c  │  v  │  b  │             │  n  │  m  │  ,  │  .  │//ALT│     │
+// 0 │     │  F1 │  F2 │  F3 │  F4 │  F5 │             │  F6 │  F7 │  F8 │  F9 │  F10│     │
+//   ├─────┼──TAB┼─ESC─┼──|──┼──'──┼─DEL─┤             ├─PgUp┼──M1─┼──↑──┼──M2─┼──F11┼─────┤
+// 1 │     │=/SHF│  1  │  \  │  "  │ BSPC│             │  n  │  ←  │  ↓  │  →  │  F12│     │
 //   └─────┴─────┴─────┴─────┴─────┴─────┘             └─────┴─────┴─────┴─────┴─────┴─────┘
+
+// left hand side:
+const uint16_t key_l1_r0_c1 = MT(MOD_LGUI, KC_F1);
+const uint16_t key_l1_r0_c2 = KC_F2;
+const uint16_t key_l1_r0_c3 = KC_F3;
+const uint16_t key_l1_r0_c4 = KC_F4;
+const uint16_t key_l1_r0_c5 = KC_F5;
+
+const uint16_t key_l1_mid_c1 = MT(MOD_LGUI, KC_TAB);
+const uint16_t key_l1_mid_c2 = KC_ESC;
+const uint16_t key_l1_mid_c3 = KC_PIPE;
+const uint16_t key_l1_mid_c4 = KC_QUOT;
+const uint16_t key_l1_mid_c5 = KC_DEL;
+
+const uint16_t key_l1_r1_c1 = MT(MOD_LSFT, KC_EQL);
+const uint16_t key_l1_r1_c2 = KC_1;
+const uint16_t key_l1_r1_c3 = KC_BACKSLASH;
+const uint16_t key_l1_r1_c4 = KC_DQUO;
+const uint16_t key_l1_r1_c5 = KC_BSPC;
+
+// right hand side:
+const uint16_t key_l1_r0_c6  = KC_F6;
+const uint16_t key_l1_r0_c7  = KC_F7;
+const uint16_t key_l1_r0_c8  = KC_F8;
+const uint16_t key_l1_r0_c9  = KC_F9;
+const uint16_t key_l1_r0_c10 = KC_F10;
+
+const uint16_t key_l1_mid_c6  = KC_PGUP;
+const uint16_t key_l1_mid_c7  = MS_BTN1;
+const uint16_t key_l1_mid_c8  = KC_UP;
+const uint16_t key_l1_mid_c9  = MS_BTN2;
+const uint16_t key_l1_mid_c10 = KC_F11;
+
+const uint16_t key_l1_r1_c6  = KC_N;
+const uint16_t key_l1_r1_c7  = KC_LEFT;
+const uint16_t key_l1_r1_c8  = KC_DOWN;
+const uint16_t key_l1_r1_c9  = KC_RIGHT;
+const uint16_t key_l1_r1_c10 = KC_F12;
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // Layer 0
@@ -112,10 +150,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // Layer 1
     [_L1] = LAYOUT(
         // row 0
-        key_l0_r0_c0, KC_Z, key_l0_r0_c2, key_l0_r0_c3, key_l0_r0_c4, key_l0_r0_c5, key_l0_r0_c6, key_l0_r0_c7, key_l0_r0_c8, key_l0_r0_c9, key_l0_r0_c10, key_l0_r0_c11,
+        KC_TRNS, key_l1_r0_c1, key_l1_r0_c2, key_l1_r0_c3, key_l1_r0_c4, key_l1_r0_c5, key_l1_r0_c6, key_l1_r0_c7, key_l1_r0_c8, key_l1_r0_c9, key_l1_r0_c10, KC_TRNS,
 
         // row 1
-        key_l0_r1_c0, key_l0_r1_c1, key_l0_r1_c2, key_l0_r1_c3, key_l0_r1_c4, key_l0_r1_c5, key_l0_r1_c6, key_l0_r1_c7, key_l0_r1_c8, key_l0_r1_c9, key_l0_r1_c10, key_l0_r1_c11,
+        KC_TRNS, key_l1_r1_c1, key_l1_r1_c2, key_l1_r1_c3, key_l1_r1_c4, key_l1_r1_c5, key_l1_r1_c6, key_l1_r1_c7, key_l1_r1_c8, key_l1_r1_c9, key_l1_r1_c10, KC_TRNS,
 
         // row 2, ro2
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
@@ -134,6 +172,18 @@ const uint16_t PROGMEM combo_l0_mid_c8[]  = {key_l0_r0_c8, key_l0_r1_c8, COMBO_E
 const uint16_t PROGMEM combo_l0_mid_c9[]  = {key_l0_r0_c9, key_l0_r1_c9, COMBO_END};
 const uint16_t PROGMEM combo_l0_mid_c10[] = {key_l0_r0_c10, key_l0_r1_c10, COMBO_END};
 
+const uint16_t PROGMEM combo_l1_mid_c1[] = {key_l1_r0_c1, key_l1_r1_c1, COMBO_END};
+const uint16_t PROGMEM combo_l1_mid_c2[] = {key_l1_r0_c2, key_l1_r1_c2, COMBO_END};
+const uint16_t PROGMEM combo_l1_mid_c3[] = {key_l1_r0_c3, key_l1_r1_c3, COMBO_END};
+const uint16_t PROGMEM combo_l1_mid_c4[] = {key_l1_r0_c4, key_l1_r1_c4, COMBO_END};
+const uint16_t PROGMEM combo_l1_mid_c5[] = {key_l1_r0_c5, key_l1_r1_c5, COMBO_END};
+
+const uint16_t PROGMEM combo_l1_mid_c6[]  = {key_l1_r0_c6, key_l1_r1_c6, COMBO_END};
+const uint16_t PROGMEM combo_l1_mid_c7[]  = {key_l1_r0_c7, key_l1_r1_c7, COMBO_END};
+const uint16_t PROGMEM combo_l1_mid_c8[]  = {key_l1_r0_c8, key_l1_r1_c8, COMBO_END};
+const uint16_t PROGMEM combo_l1_mid_c9[]  = {key_l1_r0_c9, key_l1_r1_c9, COMBO_END};
+const uint16_t PROGMEM combo_l1_mid_c10[] = {key_l1_r0_c10, key_l1_r1_c10, COMBO_END};
+
 combo_t key_combos[] = {
     COMBO(combo_l0_mid_c1, key_l0_mid_c1),
     COMBO(combo_l0_mid_c2, key_l0_mid_c2),
@@ -147,6 +197,20 @@ combo_t key_combos[] = {
     COMBO(combo_l0_mid_c8, key_l0_mid_c8),
     COMBO(combo_l0_mid_c9, key_l0_mid_c9),
     COMBO(combo_l0_mid_c10, key_l0_mid_c10),
+
+    //
+    COMBO(combo_l1_mid_c1, key_l1_mid_c1),
+    COMBO(combo_l1_mid_c2, key_l1_mid_c2),
+    COMBO(combo_l1_mid_c3, key_l1_mid_c3),
+    COMBO(combo_l1_mid_c4, key_l1_mid_c4),
+    COMBO(combo_l1_mid_c5, key_l1_mid_c5),
+
+    //
+    COMBO(combo_l1_mid_c6, key_l1_mid_c6),
+    COMBO(combo_l1_mid_c7, key_l1_mid_c7),
+    COMBO(combo_l1_mid_c8, key_l1_mid_c8),
+    COMBO(combo_l1_mid_c9, key_l1_mid_c9),
+    COMBO(combo_l1_mid_c10, key_l1_mid_c10),
 };
 
 // Returns whether to delagate the key event handling to QMK's default.
