@@ -99,13 +99,13 @@ const uint16_t key_l0_mid_c6  = KC_H;
 const uint16_t key_l0_mid_c7  = KC_J;
 const uint16_t key_l0_mid_c8  = KC_K;
 const uint16_t key_l0_mid_c9  = KC_L;
-const uint16_t key_l0_mid_c10 = KC_SEMICOLON;
+const uint16_t key_l0_mid_c10 = MT(MOD_LGUI, KC_SEMICOLON);
 
 const uint16_t key_l0_r1_c6  = KC_N;
 const uint16_t key_l0_r1_c7  = KC_M;
 const uint16_t key_l0_r1_c8  = KC_COMMA;
 const uint16_t key_l0_r1_c9  = KC_DOT;
-const uint16_t key_l0_r1_c10 = KC_SLASH;
+const uint16_t key_l0_r1_c10 = MT(MOD_LALT, KC_SLASH);
 const uint16_t key_l0_r1_c11 = KC_NO;
 
 // Layer 1:
@@ -146,13 +146,13 @@ const uint16_t key_l1_mid_c6  = KC_PGUP;
 const uint16_t key_l1_mid_c7  = MS_BTN1;
 const uint16_t key_l1_mid_c8  = KC_UP;
 const uint16_t key_l1_mid_c9  = MS_BTN2;
-const uint16_t key_l1_mid_c10 = KC_F11;
+const uint16_t key_l1_mid_c10 = MT(MOD_LGUI, KC_F11);
 
 const uint16_t key_l1_r1_c6  = KC_N;
 const uint16_t key_l1_r1_c7  = KC_LEFT;
 const uint16_t key_l1_r1_c8  = KC_DOWN;
 const uint16_t key_l1_r1_c9  = KC_RIGHT;
-const uint16_t key_l1_r1_c10 = KC_F12;
+const uint16_t key_l1_r1_c10 = MT(MOD_LALT, KC_F12);
 
 // Layer 2:
 //      0     1     2     3     4     5                   6     7     8     9     10    11
@@ -192,13 +192,13 @@ const uint16_t key_l2_mid_c6  = KC_RBRC;
 const uint16_t key_l2_mid_c7  = KC_EQL;
 const uint16_t key_l2_mid_c8  = KC_PPLS;
 const uint16_t key_l2_mid_c9  = KC_NUHS;
-const uint16_t key_l2_mid_c10 = KC_COLON;
+const uint16_t key_l2_mid_c10 = MT(MOD_LGUI, KC_COLON);
 
 const uint16_t key_l2_r1_c6  = KC_RCBR;
 const uint16_t key_l2_r1_c7  = KC_UNDS;
 const uint16_t key_l2_r1_c8  = KC_EQUAL;
 const uint16_t key_l2_r1_c9  = KC_GRV;
-const uint16_t key_l2_r1_c10 = KC_0;
+const uint16_t key_l2_r1_c10 = MT(MOD_LALT, KC_0);
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // Layer 0
