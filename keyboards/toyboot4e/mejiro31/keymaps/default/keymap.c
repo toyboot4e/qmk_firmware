@@ -6,6 +6,7 @@
 enum layer_names {
     _L0 = 0,
     _L1,
+    _L2,
 };
 
 enum custom_keycodes {
@@ -15,17 +16,38 @@ enum custom_keycodes {
 // combo:
 // https://docs.qmk.fm/features/combo
 enum combos_names {
-    MID_C1 = 0,
-    MID_C2,
-    MID_C3,
-    MID_C4,
-    MID_C5,
+    COMBO_L0_MID_C1 = 0,
+    COMBO_L0_MID_C2,
+    COMBO_L0_MID_C3,
+    COMBO_L0_MID_C4,
+    COMBO_L0_MID_C5,
+    COMBO_L0_MID_C6,
+    COMBO_L0_MID_C7,
+    COMBO_L0_MID_C8,
+    COMBO_L0_MID_C9,
+    COMBO_L0_MID_C10,
 
-    MID_C6,
-    MID_C7,
-    MID_C8,
-    MID_C9,
-    MID_C10,
+    COMBO_L1_MID_C1,
+    COMBO_L1_MID_C2,
+    COMBO_L1_MID_C3,
+    COMBO_L1_MID_C4,
+    COMBO_L1_MID_C5,
+    COMBO_L1_MID_C6,
+    COMBO_L1_MID_C7,
+    COMBO_L1_MID_C8,
+    COMBO_L1_MID_C9,
+    COMBO_L1_MID_C10,
+
+    COMBO_L2_MID_C1,
+    COMBO_L2_MID_C2,
+    COMBO_L2_MID_C3,
+    COMBO_L2_MID_C4,
+    COMBO_L2_MID_C5,
+    COMBO_L2_MID_C6,
+    COMBO_L2_MID_C7,
+    COMBO_L2_MID_C8,
+    COMBO_L2_MID_C9,
+    COMBO_L2_MID_C10,
 };
 
 // Layer 0:
@@ -132,6 +154,52 @@ const uint16_t key_l1_r1_c8  = KC_DOWN;
 const uint16_t key_l1_r1_c9  = KC_RIGHT;
 const uint16_t key_l1_r1_c10 = KC_F12;
 
+// Layer 2:
+//      0     1     2     3     4     5                   6     7     8     9     10    11
+//   ┌─────┬─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┬─────┐
+// 0 │     │  "  │  7  │  8  │  9  │  (  │             │  )  │  !  │  ^  │  @  │  $  │     │
+//   ├─────┼+/WIN┼──4──┼──5──┼──6──┼──[──┤             ├──]──┼──= ─┼──+──┼──#──┼──:──┼─────┤
+// 1 │     │=/SHF│  1  │  2  │  3  │  {  │             │  }  │  _  │  =  │  `  │  0  │     │
+//   └─────┴─────┴─────┴─────┴─────┴─────┘             └─────┴─────┴─────┴─────┴─────┴─────┘
+
+// left hand side:
+const uint16_t key_l2_r0_c1 = MT(MOD_LGUI, KC_DQUO);
+const uint16_t key_l2_r0_c2 = KC_7;
+const uint16_t key_l2_r0_c3 = KC_8;
+const uint16_t key_l2_r0_c4 = KC_9;
+const uint16_t key_l2_r0_c5 = KC_LPRN;
+
+const uint16_t key_l2_mid_c1 = MT(MOD_LGUI, KC_PPLS);
+const uint16_t key_l2_mid_c2 = KC_4;
+const uint16_t key_l2_mid_c3 = KC_5;
+const uint16_t key_l2_mid_c4 = KC_6;
+const uint16_t key_l2_mid_c5 = KC_LBRC;
+
+const uint16_t key_l2_r1_c1 = MT(MOD_LSFT, KC_EQL);
+const uint16_t key_l2_r1_c2 = KC_1;
+const uint16_t key_l2_r1_c3 = KC_2;
+const uint16_t key_l2_r1_c4 = KC_3;
+const uint16_t key_l2_r1_c5 = KC_LCBR;
+
+// right hand side:
+const uint16_t key_l2_r0_c6  = KC_RPRN;
+const uint16_t key_l2_r0_c7  = KC_EXLM;
+const uint16_t key_l2_r0_c8  = KC_CIRC;
+const uint16_t key_l2_r0_c9  = KC_AT;
+const uint16_t key_l2_r0_c10 = KC_DLR;
+
+const uint16_t key_l2_mid_c6  = KC_RBRC;
+const uint16_t key_l2_mid_c7  = KC_EQL;
+const uint16_t key_l2_mid_c8  = KC_PPLS;
+const uint16_t key_l2_mid_c9  = KC_NUHS;
+const uint16_t key_l2_mid_c10 = KC_COLON;
+
+const uint16_t key_l2_r1_c6  = KC_RCBR;
+const uint16_t key_l2_r1_c7  = KC_UNDS;
+const uint16_t key_l2_r1_c8  = KC_EQUAL;
+const uint16_t key_l2_r1_c9  = KC_GRV;
+const uint16_t key_l2_r1_c10 = KC_0;
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // Layer 0
     [_L0] = LAYOUT(
@@ -145,7 +213,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO, KC_STENO, KC_NO,
 
         // row 3
-        MT(MOD_LCTL, KC_LNG2), LT(_L1, KC_SPACE), MT(MOD_LSFT, KC_LNG1), KC_ENT),
+        MT(MOD_LCTL, KC_LNG2), LT(_L1, KC_SPACE), MT(MOD_LSFT, KC_LNG1), LT(_L2, KC_ENT)),
 
     // Layer 1
     [_L1] = LAYOUT(
@@ -154,6 +222,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
         // row 1
         KC_TRNS, key_l1_r1_c1, key_l1_r1_c2, key_l1_r1_c3, key_l1_r1_c4, key_l1_r1_c5, key_l1_r1_c6, key_l1_r1_c7, key_l1_r1_c8, key_l1_r1_c9, key_l1_r1_c10, KC_TRNS,
+
+        // row 2, ro2
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
+
+    // Layer 2
+    [_L2] = LAYOUT(
+        // row 0
+        KC_TRNS, key_l2_r0_c1, key_l2_r0_c2, key_l2_r0_c3, key_l2_r0_c4, key_l2_r0_c5, key_l2_r0_c6, key_l2_r0_c7, key_l2_r0_c8, key_l2_r0_c9, key_l2_r0_c10, KC_TRNS,
+
+        // row 1
+        KC_TRNS, key_l2_r1_c1, key_l2_r1_c2, key_l2_r1_c3, key_l2_r1_c4, key_l2_r1_c5, key_l2_r1_c6, key_l2_r1_c7, key_l2_r1_c8, key_l2_r1_c9, key_l2_r1_c10, KC_TRNS,
 
         // row 2, ro2
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
@@ -184,33 +263,54 @@ const uint16_t PROGMEM combo_l1_mid_c8[]  = {key_l1_r0_c8, key_l1_r1_c8, COMBO_E
 const uint16_t PROGMEM combo_l1_mid_c9[]  = {key_l1_r0_c9, key_l1_r1_c9, COMBO_END};
 const uint16_t PROGMEM combo_l1_mid_c10[] = {key_l1_r0_c10, key_l1_r1_c10, COMBO_END};
 
+const uint16_t PROGMEM combo_l2_mid_c1[] = {key_l2_r0_c1, key_l2_r1_c1, COMBO_END};
+const uint16_t PROGMEM combo_l2_mid_c2[] = {key_l2_r0_c2, key_l2_r1_c2, COMBO_END};
+const uint16_t PROGMEM combo_l2_mid_c3[] = {key_l2_r0_c3, key_l2_r1_c3, COMBO_END};
+const uint16_t PROGMEM combo_l2_mid_c4[] = {key_l2_r0_c4, key_l2_r1_c4, COMBO_END};
+const uint16_t PROGMEM combo_l2_mid_c5[] = {key_l2_r0_c5, key_l2_r1_c5, COMBO_END};
+
+const uint16_t PROGMEM combo_l2_mid_c6[]  = {key_l2_r0_c6, key_l2_r1_c6, COMBO_END};
+const uint16_t PROGMEM combo_l2_mid_c7[]  = {key_l2_r0_c7, key_l2_r1_c7, COMBO_END};
+const uint16_t PROGMEM combo_l2_mid_c8[]  = {key_l2_r0_c8, key_l2_r1_c8, COMBO_END};
+const uint16_t PROGMEM combo_l2_mid_c9[]  = {key_l2_r0_c9, key_l2_r1_c9, COMBO_END};
+const uint16_t PROGMEM combo_l2_mid_c10[] = {key_l2_r0_c10, key_l2_r1_c10, COMBO_END};
+
 combo_t key_combos[] = {
-    COMBO(combo_l0_mid_c1, key_l0_mid_c1),
-    COMBO(combo_l0_mid_c2, key_l0_mid_c2),
-    COMBO(combo_l0_mid_c3, key_l0_mid_c3),
-    COMBO(combo_l0_mid_c4, key_l0_mid_c4),
-    COMBO(combo_l0_mid_c5, key_l0_mid_c5),
+    // Layer 0
+    [COMBO_L0_MID_C1]  = COMBO(combo_l0_mid_c1, key_l0_mid_c1),
+    [COMBO_L0_MID_C2]  = COMBO(combo_l0_mid_c2, key_l0_mid_c2),
+    [COMBO_L0_MID_C3]  = COMBO(combo_l0_mid_c3, key_l0_mid_c3),
+    [COMBO_L0_MID_C4]  = COMBO(combo_l0_mid_c4, key_l0_mid_c4),
+    [COMBO_L0_MID_C5]  = COMBO(combo_l0_mid_c5, key_l0_mid_c5),
+    [COMBO_L0_MID_C6]  = COMBO(combo_l0_mid_c6, key_l0_mid_c6),
+    [COMBO_L0_MID_C7]  = COMBO(combo_l0_mid_c7, key_l0_mid_c7),
+    [COMBO_L0_MID_C8]  = COMBO(combo_l0_mid_c8, key_l0_mid_c8),
+    [COMBO_L0_MID_C9]  = COMBO(combo_l0_mid_c9, key_l0_mid_c9),
+    [COMBO_L0_MID_C10] = COMBO(combo_l0_mid_c10, key_l0_mid_c10),
 
-    //
-    COMBO(combo_l0_mid_c6, key_l0_mid_c6),
-    COMBO(combo_l0_mid_c7, key_l0_mid_c7),
-    COMBO(combo_l0_mid_c8, key_l0_mid_c8),
-    COMBO(combo_l0_mid_c9, key_l0_mid_c9),
-    COMBO(combo_l0_mid_c10, key_l0_mid_c10),
+    // Layer 1
+    [COMBO_L1_MID_C1]  = COMBO(combo_l1_mid_c1, key_l1_mid_c1),
+    [COMBO_L1_MID_C2]  = COMBO(combo_l1_mid_c2, key_l1_mid_c2),
+    [COMBO_L1_MID_C3]  = COMBO(combo_l1_mid_c3, key_l1_mid_c3),
+    [COMBO_L1_MID_C4]  = COMBO(combo_l1_mid_c4, key_l1_mid_c4),
+    [COMBO_L1_MID_C5]  = COMBO(combo_l1_mid_c5, key_l1_mid_c5),
+    [COMBO_L1_MID_C6]  = COMBO(combo_l1_mid_c1, key_l1_mid_c1),
+    [COMBO_L1_MID_C7]  = COMBO(combo_l1_mid_c2, key_l1_mid_c2),
+    [COMBO_L1_MID_C8]  = COMBO(combo_l1_mid_c3, key_l1_mid_c3),
+    [COMBO_L1_MID_C9]  = COMBO(combo_l1_mid_c4, key_l1_mid_c4),
+    [COMBO_L1_MID_C10] = COMBO(combo_l1_mid_c5, key_l1_mid_c5),
 
-    //
-    COMBO(combo_l1_mid_c1, key_l1_mid_c1),
-    COMBO(combo_l1_mid_c2, key_l1_mid_c2),
-    COMBO(combo_l1_mid_c3, key_l1_mid_c3),
-    COMBO(combo_l1_mid_c4, key_l1_mid_c4),
-    COMBO(combo_l1_mid_c5, key_l1_mid_c5),
-
-    //
-    COMBO(combo_l1_mid_c6, key_l1_mid_c6),
-    COMBO(combo_l1_mid_c7, key_l1_mid_c7),
-    COMBO(combo_l1_mid_c8, key_l1_mid_c8),
-    COMBO(combo_l1_mid_c9, key_l1_mid_c9),
-    COMBO(combo_l1_mid_c10, key_l1_mid_c10),
+    // Layer 2
+    [COMBO_L2_MID_C1]  = COMBO(combo_l2_mid_c1, key_l2_mid_c1),
+    [COMBO_L2_MID_C2]  = COMBO(combo_l2_mid_c2, key_l2_mid_c2),
+    [COMBO_L2_MID_C3]  = COMBO(combo_l2_mid_c3, key_l2_mid_c3),
+    [COMBO_L2_MID_C4]  = COMBO(combo_l2_mid_c4, key_l2_mid_c4),
+    [COMBO_L2_MID_C5]  = COMBO(combo_l2_mid_c5, key_l2_mid_c5),
+    [COMBO_L2_MID_C6]  = COMBO(combo_l2_mid_c6, key_l2_mid_c6),
+    [COMBO_L2_MID_C7]  = COMBO(combo_l2_mid_c7, key_l2_mid_c7),
+    [COMBO_L2_MID_C8]  = COMBO(combo_l2_mid_c8, key_l2_mid_c8),
+    [COMBO_L2_MID_C9]  = COMBO(combo_l2_mid_c9, key_l2_mid_c9),
+    [COMBO_L2_MID_C10] = COMBO(combo_l2_mid_c10, key_l2_mid_c10),
 };
 
 // Returns whether to delagate the key event handling to QMK's default.
