@@ -5,6 +5,7 @@
 
 enum layer_names {
     _L0 = 0,
+    _L1,
 };
 
 enum custom_keycodes {
@@ -85,6 +86,14 @@ const uint16_t key_l0_r1_c9  = KC_DOT;
 const uint16_t key_l0_r1_c10 = KC_SLASH;
 const uint16_t key_l0_r1_c11 = KC_NO;
 
+// Layer 1:
+//      0     1     2     3     4     5                   6     7     8     9     10    11
+//   ┌─────┬─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┬─────┐
+// 0 │     │  q  │  w  │  e  │  r  │  t  │             │  y  │  u  │  i  │  o  │  p  │     │
+//   ├─────┼a/WIN┼──s──┼──d──┼──f──┼──g──┤             ├──h──┼──j──┼──k──┼──l──┼;/WIN┼─────┤
+// 1 │     │z/SHF│  x  │  c  │  v  │  b  │             │  n  │  m  │  ,  │  .  │//ALT│     │
+//   └─────┴─────┴─────┴─────┴─────┴─────┘             └─────┴─────┴─────┴─────┴─────┴─────┘
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // Layer 0
     [_L0] = LAYOUT(
@@ -98,7 +107,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO, KC_STENO, KC_NO,
 
         // row 3
-        MT(MOD_LCTL, KC_LNG2), KC_SPACE, MT(MOD_LSFT, KC_LNG1), KC_ENT),
+        MT(MOD_LCTL, KC_LNG2), LT(_L1, KC_SPACE), MT(MOD_LSFT, KC_LNG1), KC_ENT),
+
+    // Layer 1
+    [_L1] = LAYOUT(
+        // row 0
+        key_l0_r0_c0, KC_Z, key_l0_r0_c2, key_l0_r0_c3, key_l0_r0_c4, key_l0_r0_c5, key_l0_r0_c6, key_l0_r0_c7, key_l0_r0_c8, key_l0_r0_c9, key_l0_r0_c10, key_l0_r0_c11,
+
+        // row 1
+        key_l0_r1_c0, key_l0_r1_c1, key_l0_r1_c2, key_l0_r1_c3, key_l0_r1_c4, key_l0_r1_c5, key_l0_r1_c6, key_l0_r1_c7, key_l0_r1_c8, key_l0_r1_c9, key_l0_r1_c10, key_l0_r1_c11,
+
+        // row 2, ro2
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
 };
 
 // Combos for the middle row illusion:
