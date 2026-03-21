@@ -113,7 +113,7 @@ const uint16_t key_l0_r1_c11 = KC_NO;
 //   ┌─────┬─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┬─────┐
 // 0 │     │  F1 │  F2 │  F3 │  F4 │  F5 │             │  F6 │  F7 │  F8 │  F9 │  F10│     │
 //   ├─────┼──TAB┼─ESC─┼──|──┼──'──┼─DEL─┤             ├─PgUp┼──M1─┼──↑──┼──M2─┼──F11┼─────┤
-// 1 │     │=/SHF│  1  │  \  │  "  │ BSPC│             │  n  │  ←  │  ↓  │  →  │  F12│     │
+// 1 │     │=/SHF│  1  │  \  │  "  │ BSPC│             │ PgDn│  ←  │  ↓  │  →  │  F12│     │
 //   └─────┴─────┴─────┴─────┴─────┴─────┘             └─────┴─────┴─────┴─────┴─────┴─────┘
 
 // left hand side:
@@ -148,7 +148,7 @@ const uint16_t key_l1_mid_c8  = KC_UP;
 const uint16_t key_l1_mid_c9  = MS_BTN2;
 const uint16_t key_l1_mid_c10 = MT(MOD_LGUI, KC_F11);
 
-const uint16_t key_l1_r1_c6  = KC_N;
+const uint16_t key_l1_r1_c6  = KC_PGDN;
 const uint16_t key_l1_r1_c7  = KC_LEFT;
 const uint16_t key_l1_r1_c8  = KC_DOWN;
 const uint16_t key_l1_r1_c9  = KC_RIGHT;
@@ -158,8 +158,8 @@ const uint16_t key_l1_r1_c10 = MT(MOD_LALT, KC_F12);
 //      0     1     2     3     4     5                   6     7     8     9     10    11
 //   ┌─────┬─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┬─────┐
 // 0 │     │  "  │  7  │  8  │  9  │  (  │             │  )  │  !  │  ^  │  @  │  $  │     │
-//   ├─────┼+/WIN┼──4──┼──5──┼──6──┼──[──┤             ├──]──┼──= ─┼──+──┼──#──┼──:──┼─────┤
-// 1 │     │=/SHF│  1  │  2  │  3  │  {  │             │  }  │  _  │  =  │  `  │  0  │     │
+//   ├─────┼+/WIN┼──4──┼──5──┼──6──┼──[──┤             ├──]──┼──- ─┼──+──┼──#──┼──:──┼─────┤
+// 1 │     │=/SHF│  1  │  2  │  3  │  {  │             │  }  │  `  │  =  │  `  │  0  │     │
 //   └─────┴─────┴─────┴─────┴─────┴─────┘             └─────┴─────┴─────┴─────┴─────┴─────┘
 
 // left hand side:
@@ -189,13 +189,13 @@ const uint16_t key_l2_r0_c9  = KC_AT;
 const uint16_t key_l2_r0_c10 = KC_DLR;
 
 const uint16_t key_l2_mid_c6  = KC_RBRC;
-const uint16_t key_l2_mid_c7  = KC_EQL;
+const uint16_t key_l2_mid_c7  = KC_MINUS;
 const uint16_t key_l2_mid_c8  = KC_PPLS;
 const uint16_t key_l2_mid_c9  = KC_NUHS;
 const uint16_t key_l2_mid_c10 = MT(MOD_LGUI, KC_COLON);
 
 const uint16_t key_l2_r1_c6  = KC_RCBR;
-const uint16_t key_l2_r1_c7  = KC_UNDS;
+const uint16_t key_l2_r1_c7  = KC_GRV;
 const uint16_t key_l2_r1_c8  = KC_EQUAL;
 const uint16_t key_l2_r1_c9  = KC_GRV;
 const uint16_t key_l2_r1_c10 = MT(MOD_LALT, KC_0);
@@ -294,11 +294,11 @@ combo_t key_combos[] = {
     [COMBO_L1_MID_C3]  = COMBO(combo_l1_mid_c3, key_l1_mid_c3),
     [COMBO_L1_MID_C4]  = COMBO(combo_l1_mid_c4, key_l1_mid_c4),
     [COMBO_L1_MID_C5]  = COMBO(combo_l1_mid_c5, key_l1_mid_c5),
-    [COMBO_L1_MID_C6]  = COMBO(combo_l1_mid_c1, key_l1_mid_c1),
-    [COMBO_L1_MID_C7]  = COMBO(combo_l1_mid_c2, key_l1_mid_c2),
-    [COMBO_L1_MID_C8]  = COMBO(combo_l1_mid_c3, key_l1_mid_c3),
-    [COMBO_L1_MID_C9]  = COMBO(combo_l1_mid_c4, key_l1_mid_c4),
-    [COMBO_L1_MID_C10] = COMBO(combo_l1_mid_c5, key_l1_mid_c5),
+    [COMBO_L1_MID_C6]  = COMBO(combo_l1_mid_c6, key_l1_mid_c6),
+    [COMBO_L1_MID_C7]  = COMBO(combo_l1_mid_c7, key_l1_mid_c7),
+    [COMBO_L1_MID_C8]  = COMBO(combo_l1_mid_c8, key_l1_mid_c8),
+    [COMBO_L1_MID_C9]  = COMBO(combo_l1_mid_c9, key_l1_mid_c9),
+    [COMBO_L1_MID_C10] = COMBO(combo_l1_mid_c10, key_l1_mid_c10),
 
     // Layer 2
     [COMBO_L2_MID_C1]  = COMBO(combo_l2_mid_c1, key_l2_mid_c1),
