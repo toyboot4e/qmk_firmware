@@ -7,11 +7,12 @@ enum layer_names {
     _L0 = 0,
     _L1,
     _L2,
+    _STENO,
 };
 
-enum custom_keycodes {
-    KC_STENO = SAFE_RANGE,
-};
+// enum custom_keycodes {
+//     KC_XXX = SAFE_RANGE,
+// };
 
 // combo:
 // https://docs.qmk.fm/features/combo
@@ -210,7 +211,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         key_l0_r1_c0, key_l0_r1_c1, key_l0_r1_c2, key_l0_r1_c3, key_l0_r1_c4, key_l0_r1_c5, key_l0_r1_c6, key_l0_r1_c7, key_l0_r1_c8, key_l0_r1_c9, key_l0_r1_c10, key_l0_r1_c11,
 
         // row 2
-        KC_NO, KC_STENO, KC_NO,
+        KC_NO, TG(_STENO), KC_NO,
 
         // row 3
         MT(MOD_LCTL, KC_LNG2), LT(_L1, KC_SPACE), MT(MOD_LSFT, KC_LNG1), LT(_L2, KC_ENT)),
@@ -236,6 +237,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
         // row 2, ro2
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
+
+    [_STENO] = LAYOUT(
+        //
+        STN_N1, STN_S1, STN_TL, STN_PL, STN_HL, STN_ST1, STN_ST3, STN_FR, STN_PR, STN_LR, STN_TR, STN_DR,
+        //
+        STN_N2, STN_S2, STN_KL, STN_WL, STN_RL, STN_ST2, STN_ST4, STN_RR, STN_BR, STN_GR, STN_SR, STN_ZR,
+        //
+        STN_N3, TG(_STENO), STN_N4,
+        //
+        STN_A, STN_O, STN_E, STN_U),
 };
 
 // Combos for the middle row illusion:
