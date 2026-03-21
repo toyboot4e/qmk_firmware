@@ -191,7 +191,7 @@ const uint16_t key_l2_r0_c10 = KC_DLR;
 const uint16_t key_l2_mid_c6  = KC_RBRC;
 const uint16_t key_l2_mid_c7  = KC_MINUS;
 const uint16_t key_l2_mid_c8  = KC_PPLS;
-const uint16_t key_l2_mid_c9  = KC_NUHS;
+const uint16_t key_l2_mid_c9  = S(KC_3);
 const uint16_t key_l2_mid_c10 = MT(MOD_LGUI, KC_COLON);
 
 const uint16_t key_l2_r1_c6  = KC_RCBR;
