@@ -5,6 +5,9 @@
 help:
     @just -l
 
+setup:
+    qmk setup
+
 c:
     qmk compile -kb toyboot4e/mejiro31 -km default
 
