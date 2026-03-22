@@ -206,5 +206,8 @@ void protocol_post_task(void) {
 #ifdef VIRTSER_ENABLE
     virtser_task();
 #endif
+#ifdef PLOVER_HID_ENABLE
+    plover_hid_task();
+#endif
     usb_idle_task();
 }

@@ -26,11 +26,11 @@
 #pragma once
 // clang-format off
 
-#define QMK_KEYCODES_VERSION "0.0.8"
-#define QMK_KEYCODES_VERSION_BCD 0x00000008
+#define QMK_KEYCODES_VERSION "0.0.9"
+#define QMK_KEYCODES_VERSION_BCD 0x00000009
 #define QMK_KEYCODES_VERSION_MAJOR 0
 #define QMK_KEYCODES_VERSION_MINOR 0
-#define QMK_KEYCODES_VERSION_PATCH 8
+#define QMK_KEYCODES_VERSION_PATCH 9
 
 enum qk_keycode_ranges {
 // Ranges
@@ -78,6 +78,8 @@ enum qk_keycode_ranges {
     QK_AUDIO_MAX                   = 0x74BF,
     QK_STENO                       = 0x74C0,
     QK_STENO_MAX                   = 0x74FF,
+    QK_PLOVER_HID                  = 0x7500,
+    QK_PLOVER_HID_MAX              = 0x7540,
     QK_MACRO                       = 0x7700,
     QK_MACRO_MAX                   = 0x777F,
     QK_CONNECTION                  = 0x7780,
@@ -1490,6 +1492,7 @@ enum qk_keycode_defines {
 #define IS_QK_PROGRAMMABLE_BUTTON(code) ((code) >= QK_PROGRAMMABLE_BUTTON && (code) <= QK_PROGRAMMABLE_BUTTON_MAX)
 #define IS_QK_AUDIO(code) ((code) >= QK_AUDIO && (code) <= QK_AUDIO_MAX)
 #define IS_QK_STENO(code) ((code) >= QK_STENO && (code) <= QK_STENO_MAX)
+#define IS_QK_PLOVER_HID(code) ((code) >= QK_PLOVER_HID && (code) <= QK_PLOVER_HID_MAX)
 #define IS_QK_MACRO(code) ((code) >= QK_MACRO && (code) <= QK_MACRO_MAX)
 #define IS_QK_CONNECTION(code) ((code) >= QK_CONNECTION && (code) <= QK_CONNECTION_MAX)
 #define IS_QK_COMMUNITY_MODULE(code) ((code) >= QK_COMMUNITY_MODULE && (code) <= QK_COMMUNITY_MODULE_MAX)
@@ -1552,3 +1555,4 @@ enum qk_keycode_defines {
 #define QUANTUM_KEYCODE_RANGE               QK_BOOTLOADER ... QK_LAYER_LOCK
 #define KB_KEYCODE_RANGE                    QK_KB_0 ... QK_KB_31
 #define USER_KEYCODE_RANGE                  QK_USER_0 ... QK_USER_31
+

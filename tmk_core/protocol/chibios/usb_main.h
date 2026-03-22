@@ -67,3 +67,12 @@ int8_t sendchar(uint8_t c);
 bool virtser_usb_request_cb(USBDriver *usbp);
 
 #endif
+
+/* --------------
+ * Plover HID header
+ * --------------
+ */
+
+#ifdef PLOVER_HID_ENABLE
+#include "plover_hid.h"
+#endif

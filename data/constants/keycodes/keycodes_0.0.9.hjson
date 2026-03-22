@@ -1,0 +1,7 @@
+{
+    "ranges": {
+        "0x7500/0x0040": {
+            "define": "QK_PLOVER_HID"
+        }
+    }
+}
