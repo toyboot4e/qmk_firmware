@@ -10,9 +10,10 @@ enum layer_names {
     _STENO,
 };
 
-// enum custom_keycodes {
-//     KC_XXX = SAFE_RANGE,
-// };
+enum custom_keycodes {
+    KC_L1 = SAFE_RANGE,
+    KC_L2,
+};
 
 // combo:
 // https://docs.qmk.fm/features/combo
@@ -214,7 +215,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO, TG(_STENO), KC_NO,
 
         // row 3
-        MT(MOD_LCTL, KC_LNG2), LT(_L1, KC_SPACE), MT(MOD_LSFT, KC_LNG1), LT(_L2, KC_ENT)),
+        MT(MOD_LCTL, KC_LNG2), KC_L1, MT(MOD_LSFT, KC_LNG1), KC_L2),
 
     // Layer 1
     [_L1] = LAYOUT(
@@ -324,9 +325,41 @@ combo_t key_combos[] = {
     [COMBO_L2_MID_C10] = COMBO(combo_l2_mid_c10, key_l2_mid_c10),
 };
 
+/// Layer/tap-like, but switches the layer immediately (mainly for combos in the new layer).
+typedef struct {
+    uint16_t keycode;
+    uint8_t  layer;
+    uint16_t tap;
+    // states
+    bool     is_down;
+    uint16_t timer;
+} my_layer_tap_t;
+
+bool process_my_layer_tap(uint16_t keycode, keyrecord_t *record, my_layer_tap_t *layer_tap) {
+    if (keycode != layer_tap->keycode) return true;
+
+    if (record->event.pressed) {
+        layer_tap->is_down = true;
+        layer_tap->timer   = timer_read();
+        layer_on(layer_tap->layer);
+    } else {
+        if (layer_tap->is_down && timer_elapsed(layer_tap->timer) < TAPPING_TERM) {
+            tap_code(layer_tap->tap);
+        }
+        layer_tap->is_down = false;
+        layer_off(layer_tap->layer);
+    }
+    return false;
+}
+
+static my_layer_tap_t g_layer_tap_1 = {.keycode = KC_L1, .layer = _L1, .tap = KC_SPC};
+static my_layer_tap_t g_layer_tap_2 = {.keycode = KC_L2, .layer = _L2, .tap = KC_ENT};
+
 // Returns whether to delagate the key event handling to QMK's default.
 // https://docs.qmk.fm/custom_quantum_functions#example-process-record-user-implementation
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (!process_my_layer_tap(keycode, record, &g_layer_tap_1)) return false;
+    if (!process_my_layer_tap(keycode, record, &g_layer_tap_2)) return false;
     return true;
 }
 
