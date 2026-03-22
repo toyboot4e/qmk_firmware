@@ -327,12 +327,11 @@ combo_t key_combos[] = {
 
 /// Layer/tap-like, but switches the layer immediately (mainly for combos in the new layer).
 typedef struct {
-    uint16_t keycode;
-    uint8_t  layer;
-    uint16_t tap;
-    // states
-    bool     is_down;
-    uint16_t timer;
+    const uint16_t keycode;
+    const uint8_t  layer;
+    const uint16_t tap;
+    bool           is_down;
+    uint16_t       timer;
 } my_layer_tap_t;
 
 bool process_my_layer_tap(uint16_t keycode, keyrecord_t *record, my_layer_tap_t *layer_tap) {
