@@ -536,10 +536,28 @@ void plover_hid_update(uint8_t button, bool pressed) {
 }
 
 void plover_hid_task(void) {
-    if (plover_hid_report_updated) {
-        send_report(USB_ENDPOINT_IN_PLOVER_HID, plover_hid_current_report, sizeof(plover_hid_current_report));
-        plover_hid_report_updated = false;
+    if (!plover_hid_report_updated) {
+        return;
     }
+
+    osalSysLock();
+
+    if (usbGetDriverStateI(&USB_DRIVER) != USB_ACTIVE) {
+        osalSysUnlock();
+        return;
+    }
+
+    /* Skip if a transfer is already in progress — retry next cycle. */
+    if (usbGetTransmitStatusI(&USB_DRIVER, PLOVER_HID_IN_EPNUM)) {
+        osalSysUnlock();
+        return;
+    }
+
+    usbStartTransmitI(&USB_DRIVER, PLOVER_HID_IN_EPNUM,
+                       plover_hid_current_report, sizeof(plover_hid_current_report));
+    osalSysUnlock();
+
+    plover_hid_report_updated = false;
 }
 #endif
 

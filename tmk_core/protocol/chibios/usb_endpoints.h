@@ -47,9 +47,6 @@
 #    define PLOVER_HID_IN_CAPACITY USB_DEFAULT_BUFFER_CAPACITY
 #endif
 
-#if !defined(PLOVER_HID_OUT_CAPACITY)
-#    define PLOVER_HID_OUT_CAPACITY USB_DEFAULT_BUFFER_CAPACITY
-#endif
 
 #if !defined(MIDI_STREAM_IN_CAPACITY)
 #    define MIDI_STREAM_IN_CAPACITY USB_DEFAULT_BUFFER_CAPACITY
@@ -138,9 +135,6 @@ extern usb_endpoint_in_lut_t usb_endpoint_interface_lut[TOTAL_INTERFACES];
 typedef enum {
 #if defined(RAW_ENABLE)
     USB_ENDPOINT_OUT_RAW,
-#endif
-#if defined(PLOVER_HID_ENABLE)
-    USB_ENDPOINT_OUT_PLOVER_HID,
 #endif
 #if defined(MIDI_ENABLE)
     USB_ENDPOINT_OUT_MIDI,
