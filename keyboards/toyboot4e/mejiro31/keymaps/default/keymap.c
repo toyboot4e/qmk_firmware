@@ -2,6 +2,7 @@
 // - "middle row": two-key combo of two rows in the same column.
 
 #include QMK_KEYBOARD_H
+#include "keymap_plover_hid.h"
 
 enum layer_names {
     _L0 = 0,
@@ -240,14 +241,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
 
     [_STENO] = LAYOUT(
+        // Gemini PR:
+        // STN_N1, STN_S1, STN_TL, STN_PL, STN_HL, STN_ST1, STN_ST3, STN_FR, STN_PR, STN_LR, STN_TR, STN_DR,
         //
-        STN_N1, STN_S1, STN_TL, STN_PL, STN_HL, STN_ST1, STN_ST3, STN_FR, STN_PR, STN_LR, STN_TR, STN_DR,
+        // STN_N2, STN_S2, STN_KL, STN_WL, STN_RL, STN_ST2, STN_ST4, STN_RR, STN_BR, STN_GR, STN_SR, STN_ZR,
         //
-        STN_N2, STN_S2, STN_KL, STN_WL, STN_RL, STN_ST2, STN_ST4, STN_RR, STN_BR, STN_GR, STN_SR, STN_ZR,
+        // STN_N3, TG(_STENO), STN_N4,
         //
-        STN_N3, TG(_STENO), STN_N4,
+        // STN_A, STN_O, STN_E, STN_U
+
+        // Plover HID
+        PLV_SL, PLV_NUM, PLV_TL, PLV_PL, PLV_HL, PLV_STR, PLV_STR, PLV_FR, PLV_PR, PLV_LR, PLV_TR, PLV_DR,
         //
-        STN_A, STN_O, STN_E, STN_U),
+        PLV_SL, PLV_X1, PLV_KL, PLV_WL, PLV_RL, PLV_STR, PLV_STR, PLV_RR, PLV_BR, PLV_GR, PLV_SR, PLV_ZR,
+        //
+        PLV_NUM, TG(_STENO), PLV_NUM,
+        //
+        PLV_A, PLV_O, PLV_E, PLV_U),
 };
 
 // Combos for the middle row illusion:

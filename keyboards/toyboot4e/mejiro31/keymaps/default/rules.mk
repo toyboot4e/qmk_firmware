@@ -1,2 +1,1 @@
-STENO_ENABLE = yes
-STENO_PROTOCOL = geminipr
+PLOVER_HID_ENABLE = yes
